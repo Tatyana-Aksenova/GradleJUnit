@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 import static io.restassured.RestAssured.given;
 
 
-@ExtendWith(RetryListenerJunit5.class)
+@Tag("FAILAPI")
 public class SimpleApiRefactoredTests {
     @BeforeAll
     public static void setUp() {

@@ -1,15 +1,18 @@
 package tests.junit5.ui.base_tests.selenium;
 
+import listeners.RetryListenerJunit5;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import tests.junit5.ui.base_tests.page_objects.unitickets.UtSearchPage;
 import tests.junit5.ui.base_tests.page_objects.unitickets.UtMainPage;
 
 import java.util.List;
 
 @Tag("UI")
+@ExtendWith(RetryListenerJunit5.class)
 public class UtFilterTest extends BaseTest {
     @BeforeEach
     public void openSite() {

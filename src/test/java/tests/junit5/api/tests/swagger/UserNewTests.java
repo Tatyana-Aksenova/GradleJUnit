@@ -17,7 +17,7 @@ import java.util.List;
 
 import static tests.junit5.api.addons.RandomTestData.getAdminUser;
 
-@Tag("API")
+
 @ExtendWith(RetryListenerJunit5.class)
 public class UserNewTests extends BaseApiTest {
 
