@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
 
-@Tag("API")
+
 @ExtendWith(RetryListenerJunit5.class)
 public class SimpleApiRefactoredTests {
     @BeforeAll
