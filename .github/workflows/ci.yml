@@ -28,7 +28,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Gradle test
-        run: ./gradlew clean test
+        run: ./gradlew clean myTags -x test -DcustomTags="UI,API"
         env:
           BROWSER_NAME: chrome
           BROWSER_OPTIONS_CHROME: --remote-allow-origins=*;--disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless=new;--window-size=1920,1080
@@ -53,3 +53,12 @@ jobs:
           name: allure-report
           path: build/reports/allure-report/
           retention-days: 14
+
+      - name: Публикация отчета Allure на GitHub Pages
+        if: always()
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build/reports/allure-report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

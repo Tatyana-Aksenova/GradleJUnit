@@ -1,6 +1,9 @@
 package tests.junit5.api.tests.swagger;
 
 
+import listeners.RetryListenerJunit5;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.extension.ExtendWith;
 import tests.junit5.api.addons.AdminUser;
 import tests.junit5.api.models.swager.FullUser;
 import tests.junit5.api.models.swager.Info;
@@ -14,6 +17,8 @@ import java.util.List;
 
 import static tests.junit5.api.addons.RandomTestData.getAdminUser;
 
+@Tag("API")
+@ExtendWith(RetryListenerJunit5.class)
 public class UserNewTests extends BaseApiTest {
 
     @Test
