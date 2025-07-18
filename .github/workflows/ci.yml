@@ -38,17 +38,6 @@ jobs:
         if: always()
         run: ./gradlew allureReport
 
-      - name: Переместить отчет из подпапки allureResult в корень
-        if: always()
-        run: |
-          if [ -d "build/reports/allure-report/allureResult" ]; then
-            echo "Найдена подпапка allureResult — перемещаем содержимое в корень"
-            mv build/reports/allure-report/allureResult/* build/reports/allure-report/
-            rm -rf build/reports/allure-report/allureResult
-          else
-            echo "Подпапка allureResult не найдена"
-          fi
-
       - name: Загрузка результатов Allure
         if: always()
         uses: actions/upload-artifact@v4
@@ -77,7 +66,7 @@ jobs:
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
           branch: gh-pages
-          folder: build/reports/allure-report
+          folder: build/reports/allure-report/allureReport
           clean: true
           clean-exclude: |
             .nojekyll
