@@ -1,0 +1,60 @@
+name: Java CI Junit
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-test:
+    name: 'Run tests'
+    runs-on: macos-latest
+
+    steps:
+      - name: Git clone
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: '11'
+          cache: 'gradle'
+
+      - name: Gradle test
+        run: ./gradlew clean myTags -x test -DcustomTags="UI,API"
+        env:
+          BROWSER_NAME: chrome
+          BROWSER_OPTIONS_CHROME: --remote-allow-origins=*;--disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless=new;--window-size=1920,1080
+          RUN_CI: true
+
+      - name: Generate Allure Report
+        if: always()
+        run: ./gradlew allureReport
+
+      - name: Upload Allure Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: build/allure-results/
+          retention-days: 14
+
+      - name: Publish Allure Report
+        if: always()
+        uses: simple-elf/allure-report-action@v1.7
+        with:
+          allure_results: build/allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+          keep_reports: 20
+
+      - name: Display Allure Report Link
+        if: always()
+        run: |
+          echo "Allure Report URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure-history"
+
