@@ -38,6 +38,17 @@ jobs:
         if: always()
         run: ./gradlew allureReport
 
+      - name: Проверка содержимого Allure-отчета
+        if: always()
+        run: |
+          ls -la build/reports/allure-report || echo "Папка allure-report пуста или отсутствует"
+          if [ -f "build/reports/allure-report/index.html" ]; then
+            echo "Файл index.html найден"
+          else
+            echo "Ошибка: Файл index.html не найден в build/reports/allure-report"
+            exit 1
+          fi
+
       - name: Загрузка результатов Allure
         if: always()
         uses: actions/upload-artifact@v4
@@ -54,6 +65,12 @@ jobs:
           path: build/reports/allure-report/
           retention-days: 14
 
+      - name: Добавление файла .nojekyll
+        if: always()
+        run: |
+          touch build/reports/allure-report/.nojekyll
+          echo "Создан файл .nojekyll для GitHub Pages"
+
       - name: Публикация отчета Allure на GitHub Pages
         if: always()
         uses: JamesIves/github-pages-deploy-action@v4
@@ -62,6 +79,8 @@ jobs:
           branch: gh-pages
           folder: build/reports/allure-report
           clean: true
+          clean-exclude: |
+            .nojekyll
           single-commit: true
           git-config-name: github-actions[bot]
           git-config-email: github-actions[bot]@users.noreply.github.com
