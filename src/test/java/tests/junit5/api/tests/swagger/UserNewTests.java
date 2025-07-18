@@ -2,7 +2,7 @@ package tests.junit5.api.tests.swagger;
 
 
 import listeners.RetryListenerJunit5;
-import org.junit.jupiter.api.Tag;
+
 import org.junit.jupiter.api.extension.ExtendWith;
 import tests.junit5.api.addons.AdminUser;
 import tests.junit5.api.models.swager.FullUser;

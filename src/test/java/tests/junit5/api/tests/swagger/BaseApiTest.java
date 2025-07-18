@@ -3,6 +3,7 @@ package tests.junit5.api.tests.swagger;
 import tests.junit5.api.addons.AdminUserResolver;
 import tests.junit5.api.addons.CustomTpl;
 import tests.junit5.api.models.swager.FullUser;
+import tests.junit5.api.models.swager.GamesItem;
 import tests.junit5.api.services.UserService;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
@@ -11,13 +12,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-
-import static tests.junit5.api.addons.RandomTestData.getRandomUser;
+import static tests.junit5.api.addons.RandomTestData.*;
 
 @ExtendWith(AdminUserResolver.class)
 public class BaseApiTest {
     protected static UserService userService;
     protected FullUser randomUser;
+    private  FullUser userWithGames;
+    private GamesItem gamesItem;
+
 
     @BeforeAll
     public static void setUp() {
@@ -29,5 +32,7 @@ public class BaseApiTest {
     @BeforeEach
     public void initTestUser() {
         randomUser = getRandomUser();
+        userWithGames = getRandomUserWithGames();
+        gamesItem = createRandomGame();
     }
 }
