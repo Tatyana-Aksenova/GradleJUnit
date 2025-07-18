@@ -58,7 +58,15 @@ jobs:
         if: always()
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
           branch: gh-pages
           folder: build/reports/allure-report
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          clean: true
+          single-commit: true
+          git-config-name: github-actions[bot]
+          git-config-email: github-actions[bot]@users.noreply.github.com
+
+      - name: Отображение ссылки на отчет Allure
+        if: always()
+        run: |
+          echo "URL отчета Allure: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"

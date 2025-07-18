@@ -11,7 +11,6 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import tests.junit5.ui.base_tests.page_objects.copyruem.CalculatorPage;
 import tests.junit5.ui.base_tests.page_objects.copyruem.HomePage;
 
-@Tag("UI")
 public class CopyruemCalculatorTests extends BaseTest {
 
     @BeforeEach
