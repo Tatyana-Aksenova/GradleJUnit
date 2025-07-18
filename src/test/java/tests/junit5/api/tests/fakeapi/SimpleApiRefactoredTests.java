@@ -36,8 +36,10 @@ public class SimpleApiRefactoredTests {
 
     @Test
     public void getAllUsersTest() {
-        given().get("/users")
+        given().log().all()
+                .get("/users")
                 .then()
+                .log().all()  // Логирует весь ответ
                 .statusCode(200);
     }
 }
