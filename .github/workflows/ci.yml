@@ -24,6 +24,9 @@ jobs:
           java-version: '11'
           cache: 'gradle'
 
+      - name: Установка прав на Gradle Wrapper
+        run: chmod +x ./gradlew
+
       - name: Gradle test
         run: ./gradlew clean myTags -x test -DcustomTags="UI,API"
         env:
