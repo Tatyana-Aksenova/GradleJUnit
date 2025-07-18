@@ -38,15 +38,15 @@ jobs:
         if: always()
         run: ./gradlew allureReport
 
-      - name: Проверка содержимого Allure-отчета
+      - name: Переместить отчет из подпапки allureResult в корень
         if: always()
         run: |
-          ls -la build/reports/allure-report || echo "Папка allure-report пуста или отсутствует"
-          if [ -f "build/reports/allure-report/index.html" ]; then
-            echo "Файл index.html найден"
+          if [ -d "build/reports/allure-report/allureResult" ]; then
+            echo "Найдена подпапка allureResult — перемещаем содержимое в корень"
+            mv build/reports/allure-report/allureResult/* build/reports/allure-report/
+            rm -rf build/reports/allure-report/allureResult
           else
-            echo "Ошибка: Файл index.html не найден в build/reports/allure-report"
-            exit 1
+            echo "Подпапка allureResult не найдена"
           fi
 
       - name: Загрузка результатов Allure
