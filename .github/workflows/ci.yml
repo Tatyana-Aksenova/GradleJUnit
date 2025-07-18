@@ -28,7 +28,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Gradle test
-        run: ./gradlew clean myTags -x test -DcustomTags="UI,API"
+        run: ./gradlew clean test
         env:
           BROWSER_NAME: chrome
           BROWSER_OPTIONS_CHROME: --remote-allow-origins=*;--disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless=new;--window-size=1920,1080
