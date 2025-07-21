@@ -35,7 +35,7 @@ public class GameTests extends BaseApiTest {
     @Test
     public void testGetGameByIdSuccess(@AdminUser FullUser user) {
         String token = userService.auth(user).asJwt();
-        GamesItem game = gameService.getGame(token, 3)
+        GamesItem game = gameService.getGame(token, 10584)
                 .should(Conditions.hasStatusCode(200))
                 .as(GamesItem.class);
         Assertions.assertNotNull(game);
@@ -52,7 +52,7 @@ public class GameTests extends BaseApiTest {
     @Test
     public void deleteBaseGame(@AdminUser FullUser user) {
         String token = userService.auth(user).asJwt();
-        gameService.deleteGame(token, 3)
+        gameService.deleteGame(token, 10584)
                 .should(Conditions.hasStatusCode(400))
                 .should(Conditions.hasMessage("Cant delete game from base users"));
     }

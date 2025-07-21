@@ -88,7 +88,7 @@ public class SimpleApiTests {
         UserRoot bodyRequest = UserRoot.builder()
                 .name(name)
                 .phone("791237192")
-                .email("fakemail@gmail.com")
+                .email("fakemail323@gmail.com")
                 .username("thomasadmin")
                 .password("mycoolpassword")
                 .address(address).build();
