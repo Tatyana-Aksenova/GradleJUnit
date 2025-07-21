@@ -1,0 +1,2 @@
+[2025-07-21T15:01:34.500Z] [SEVERE] https://poisk.uniticket.ru/favicon.ico - Failed to load resource: the server responded with a status of 404 ()
+[2025-07-21T15:06:29.992Z] [WARNING] https://poisk.uniticket.ru/flights/KZN2507DXB30071 - The resource https://poisk.uniticket.ru/widgets/whitelabel_ru.js?v=002&rtl=false&locale=ru was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.

@@ -1,0 +1,115 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset = UTF-8">
+    <script src="https://yastatic.net/jquery/2.2.3/jquery.min.js" crossorigin="anonymous"></script>
+
+    <link href="https://yastatic.net/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://yastatic.net/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <link type="text/css" href="https://yandex.st/highlightjs/8.0/styles/github.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/bash.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/json.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/xml.min.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <style>
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <pre><code>POST: http://85.192.34.140:8080/api/user/games</code></pre>
+</div>
+
+    <h4>Body</h4>
+    <div>
+        <pre><code>{
+    "requirements": {
+        "videoCard": "NVIDEA",
+        "hardDrive": 66,
+        "osName": "Windows",
+        "ramGb": 6
+    },
+    "requiredAge": false,
+    "rating": 7,
+    "description": "Seymour Legg",
+    "title": "Péché Mortel",
+    "tags": [
+        "shooter",
+        "quests"
+    ],
+    "isFree": true,
+    "price": 0,
+    "dlcs": [
+        {
+            "dlcName": "Garlic Jr",
+            "similarDlc": {
+                "isFree": false,
+                "dlcNameFromAnotherGame": "Ilene Wright"
+            },
+            "price": 20,
+            "rating": 8,
+            "description": "Cammie Sole",
+            "isDlcFree": true
+        }
+    ],
+    "genre": "Fantasy",
+    "company": "Kilback-Lueilwitz",
+    "publish_date": "2025-07-21T14:59:04.801527"
+}</code></pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>
+                <pre><code><b>Accept</b>: */*</code></pre>
+            </div>
+            <div>
+                <pre><code><b>Content-Type</b>: application/json</code></pre>
+            </div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        <pre><code>curl -v -X POST 'http://85.192.34.140:8080/api/user/games' -H 'Accept: */*' -H 'Content-Type: application/json' -d '{
+    "requirements": {
+        "videoCard": "NVIDEA",
+        "hardDrive": 66,
+        "osName": "Windows",
+        "ramGb": 6
+    },
+    "requiredAge": false,
+    "rating": 7,
+    "description": "Seymour Legg",
+    "title": "Péché Mortel",
+    "tags": [
+        "shooter",
+        "quests"
+    ],
+    "isFree": true,
+    "price": 0,
+    "dlcs": [
+        {
+            "dlcName": "Garlic Jr",
+            "similarDlc": {
+                "isFree": false,
+                "dlcNameFromAnotherGame": "Ilene Wright"
+            },
+            "price": 20,
+            "rating": 8,
+            "description": "Cammie Sole",
+            "isDlcFree": true
+        }
+    ],
+    "genre": "Fantasy",
+    "company": "Kilback-Lueilwitz",
+    "publish_date": "2025-07-21T14:59:04.801527"
+}'</code></pre>
+    </div>
+</body>
+</html>
